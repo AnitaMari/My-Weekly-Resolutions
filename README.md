@@ -1,3 +1,37 @@
+## Setup
+
+### Dependencies
+
+- Go to project directory. Run `npm install` in project directory. This will install server-related dependencies such as `express`.
+- `cd client` and run `npm install`. This will install client dependencies (React).
+
+### Database Prep
+
+- Access the MySQL interface in your terminal by running `mysql -u root -p`
+- Create a new database called what you want (xxxxx): `create database xxxxxx`
+- Add a `.env` file to the project folder of this repository containing the MySQL authentication information for MySQL user. For example:
+
+```bash
+DB_HOST=localhost
+DB_NAME=homework
+DB_USER=root
+DB_PASS=root
+```
+
+- Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create 2 tables called 'days' and 'resolutions' in your database.
+
+- Make sure you understand how each table is constructed. In your MySQL console, you can run `use xxxxxx;` and then `describe days;` or `describe resolutions;` to see the structure of each table.
+
+### Development
+
+- Run `npm start` in project directory to start the Express server on port 5002. If you want to change it, do it in the client, in package.json.
+
+- In another terminal, do `cd client` and run `npm start` to start the client in development mode with hot reloading in port 3000.
+
+
+
+
+
 # **MVP Project Description: My Weekly Resolutions**
 
 ## **SUMMARY**
