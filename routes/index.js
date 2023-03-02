@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.send( { message: 'Hello from the backend' });
 });
 
-router.get("/days", (req, res, next) => { //IT WORKS
+router.get("/days", (req, res, next) => { 
    db("SELECT * FROM days ORDER BY id ASC;")
     .then(results => {
       res.send(results.data);
@@ -15,7 +15,7 @@ router.get("/days", (req, res, next) => { //IT WORKS
     .catch(err => res.status(500).send(err));
 });
 
-router.get("/days/:day_id", (req, res) => { //IT DOESN'T WORK
+router.get("/days/:day_id", (req, res) => { 
   db(`SELECT * FROM days WHERE id = ${dayId}`)
   .then(results => {
     res.send(results.data);
@@ -23,8 +23,8 @@ router.get("/days/:day_id", (req, res) => { //IT DOESN'T WORK
   .catch(err => res.status(500).send(err));
 });
 
-router.get("/days/:day_id/resolutions", (req, res) => {//IT WORKS BAD
-  //BECAUSE IT RETURNS ALL THE RESOLUTIONS
+router.get("/days/:day_id/resolutions", (req, res) => {
+ 
     db("SELECT * FROM resolutions ORDER BY id ASC;")
     .then(results => {
       res.send(results.data);
@@ -32,8 +32,7 @@ router.get("/days/:day_id/resolutions", (req, res) => {//IT WORKS BAD
     .catch(err => res.status(500).send(err));
 });
 
-//THE POST DOESN'T WORK
-router.post("/days/:day_id/resolutions", async (req, res) => { //do I need the day_id? 
+router.post("/days/:day_id/resolutions", async (req, res) => { 
   
   let { text, complete }= req.body; 
   let day_id = req.params.day_id;
@@ -52,7 +51,7 @@ router.post("/days/:day_id/resolutions", async (req, res) => { //do I need the d
   }
 });
 
-//:r_id it was written it like this
+
 router.delete("/days/:day_id/resolutions/:r_id", async (req, res) => {
     let rId = req.params.r_id;
   
@@ -74,7 +73,7 @@ router.delete("/days/:day_id/resolutions/:r_id", async (req, res) => {
     }
   });
 
- // :r_id it was written like that
+
 router.put("/days/:day_id/resolutions/:r_id", async (req, res) => {
   let rId = req.params.r_id;
 
